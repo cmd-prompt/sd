@@ -19,5 +19,19 @@ fn check_armstrong(number:u32) {
 }
 
   fn main() {
-    check_armstrong(153)
+    use std::io::{stdin,stdout,Write};
+    loop {
+      let mut number = String::new();
+      print!("Input your number: ");
+      let _=stdout().flush();
+      stdin().read_line(&mut number).expect("Did not enter a correct string");
+      if let Some('\n')=number.chars().next_back() {
+          number.pop();
+      }
+      if let Some('\r')=number.chars().next_back() {
+          number.pop();
+      }
+      check_armstrong(number.parse::<u32>().unwrap());
+    }
+    
   }

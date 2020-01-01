@@ -1,22 +1,17 @@
-fn check_armstrong(number:u32) {
-  let digits : Vec<u32> = number.to_string().chars().map(|d| d.to_digit(10).unwrap()).collect();
+fn check_if_leap_year(number:u32) {
+  if number % 4 == 0  { 
+    if number % 100 >= 1{
+      println!("{} is a leap year", number)
+    }else  if number % 400 == 0 {
+      println!("{} is a leap year", number)
+    }else{
+      println!("{} is not a leap year", number)
+    }
+    }
+  else{
+    println!("{} is not a leap year", number)
+  }}
 
-  use std::convert::TryInto;
-  let sum_digit : u32 = digits.len().try_into().unwrap();
-  let mut sum = 0 ;
-
-  for item in digits{
-    sum = sum + u32::pow(item, sum_digit);
-
-  }
-  if sum == number {
-  println!("{} is an armstrong number" ,number);
-
-  } else {
-  println!("{} is not an armstrong number" ,number)
-    
-  }
-}
 
   fn main() {
     use std::io::{stdin,stdout,Write};
@@ -31,7 +26,7 @@ fn check_armstrong(number:u32) {
       if let Some('\r')=number.chars().next_back() {
           number.pop();
       }
-      check_armstrong(number.parse::<u32>().unwrap());
+      check_if_leap_year(number.parse::<u32>().unwrap());
     }
     
   }
